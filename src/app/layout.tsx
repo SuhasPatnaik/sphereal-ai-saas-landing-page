@@ -7,6 +7,7 @@ const soraFont = Sora({
   variable: "--font-sora",
   weight: "variable",
 });
+
 const spaceGroteskFont = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
@@ -15,7 +16,7 @@ const spaceGroteskFont = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "AI SaaS Landing Page",
-  description: "Created by Frontend Tribe",
+  description: "sphereal.ai is an AI SaaS product offering",
 };
 
 export default function RootLayout({
@@ -25,6 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body
         className={`${soraFont.variable} ${spaceGroteskFont.variable} antialiased bg-gray-950 text-gray-300 font-body`}
       >
