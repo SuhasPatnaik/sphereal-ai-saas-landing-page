@@ -1,4 +1,6 @@
 import logoImg from "@/assets/images/sphereal-logo.svg?url";
+import Button from "@/components/Button";
+import { ButtonProps } from "@/components/Button";
 import Link from "next/link";
 
 export const navItems = [
@@ -27,7 +29,11 @@ export const loginItems = [
     name: "Sign Up",
     href: "#sign-up",
   },
-];
+] satisfies {
+  buttonVariant: ButtonProps["variant"];
+  name: string;
+  href: string;
+}[];
 
 const Header = () => {
   return (
@@ -41,8 +47,8 @@ const Header = () => {
             ></div>
             <div className="font-extrabold text-2xl px-2">sphereal.ai</div>
           </div>
-          <div className="w-full h-full">
-            <nav className="flex justify-center h-full items-center">
+          <div className="w-full h-full hidden lg:flex justify-center">
+            <nav className="flex">
               {navItems.map((navItem, index) => (
                 <Link
                   key={index}
@@ -54,8 +60,15 @@ const Header = () => {
               ))}
             </nav>
           </div>
-          <div className="flex items-center pl-12">
-            <button className="size-10 rounded-lg border-2 border-transparent [background:conic-gradient(from_30deg,var(--color-violet-400),var(--color-fuchsia-400),var(--color-amber-300),var(--color-teal-300))_border-box]">
+          <div className="hidden lg:flex gap-4">
+            {loginItems.map(({ buttonVariant, name, href }) => (
+              <a key={name} href={href}>
+                <Button variant={buttonVariant}>{name}</Button>
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center pl-12 lg:hidden">
+            <button className="size-10 rounded-lg border-2 border-transparent [background:conic-gradient(from_45deg,var(--color-violet-400),var(--color-fuchsia-400),var(--color-amber-300),var(--color-teal-300))_border-box]">
               <div className="w-full h-full bg-gray-950 rounded-md flex flex-col gap-2 items-center justify-center">
                 <div className="w-4 h-0.5 bg-gray-100"></div>
                 <div className="w-4 h-0.5 bg-gray-100"></div>
